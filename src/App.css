@@ -1,38 +1,439 @@
-.App {
+/* Original CSS remains unchanged */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+}
+
+.big-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 900px;
+}
+
+.header-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 900px;
+  margin-top: 50px; /* Added space at the top */
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input {
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 2px solid #444;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.button, .location-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #1565C0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover, .location-button:hover {
+  background-color: #1565C0;
+}
+
+.weather-info {
+  width: 100%;  /* Full width of parent */
+  display: flex;
+  flex-direction: column;  /* Stack items vertically */
+  justify-content: center;  /* Center content vertically */
+  align-items: center;  /* Center content horizontally */
+  text-align: center;  /* Center the text */
+  font-size: 1.5rem;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.forecast-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.city-name {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.temperature {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.weather-description {
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.feels-like, .visibility {
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
+
+.humidity, .wind {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.temp-range {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+.low-temp, .high-temp {
+  font-size: 1.2rem;
+}
+
+.sun-info {
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+.forecast-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.forecast-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.forecast-item {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 18%;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 1.2rem;
+}
+
+/* Mode toggle button */
+.mode-toggle {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Light mode styles */
+.light-mode {
+  background: linear-gradient(to bottom, #71afdb, #FFFFFF); /* Light blue gradient */
+}
+
+.light-mode .big-container,
+.light-mode .forecast-container {
+  background-color: #FFFFFF;
+}
+
+.light-mode .header-container {
+  background-color: #FFFFFF;
+}
+
+.light-mode .title {
+  color: #1565C0; /* Deep blue for title */
+}
+
+.light-mode .button,
+.light-mode .location-button {
+  background-color: #1565C0;
+  color: #FFFFFF;
+}
+
+.light-mode .mode-toggle {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+.light-mode .weather-info,
+.light-mode .forecast-item {
+  color: #333333;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background: linear-gradient(to bottom, #101010, #808080); /* Navy blue to dark grey gradient */
+}
+
+.dark-mode .big-container,
+.dark-mode .forecast-container {
+  background-color: #424242;
+  color: #E0E0E0;
+}
+
+.dark-mode .header-container {
+  background-color: #333333;
+}
+
+.dark-mode .title {
+  color: #E0E0E0; /* Light grey for title */
+}
+
+.dark-mode .button,
+.dark-mode .location-button {
+  background-color: #E0E0E0; /* Dark white button */
+  color: #151515;
+}
+
+.dark-mode .mode-toggle {
+  background-color: #E0E0E0;
+  color: #151515;
+}
+
+.dark-mode .weather-info,
+.dark-mode .forecast-item {
+  color: #E0E0E0; /* Light grey for text */
+}
+
+.dark-mode .forecast-item {
+  background-color: #333333;  /* Darker background for forecast items in dark mode */
+  color: #E0E0E0;
+}
+
+
+/* Responsive Design */
+
+/* Break forecast items into rows at 900px */
+@media screen and (max-width: 900px) {
+  .forecast-grid {
+    flex-direction: column; /* Stack forecast items vertically */
+    align-items: center; /* Center forecast items */
+}
+
+  .forecast-item {
+    width: 80%; /* Make the forecast items take up more width */
+    margin-bottom: 20px; /* Add some spacing between items */
+  }
+}
+
+
+/* Break search bar and button into rows at 695px */
+@media screen and (max-width: 695px) {
+  .form {
+    flex-direction: column; /* Stack the input and button vertically */
+  }
+
+  .input {
+    margin-right: 0; /* Remove margin when stacked */
+    margin-bottom: 10px; /* Add some spacing between input and button */
+  }
+
+  .button {
+    width: 100%; /* Make the button full width when stacked */
+  }
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0; /* Reduced height */
+  font-size: 0.9rem; /* Smaller font size */
+}
+
+/* Footer colors for light and dark mode */
+.light-footer {
+  background-color: #1565C0;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.dark-footer {
+  background-color: #E0E0E0;
+  color: #151515;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it sits above other content */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal h2 {
+  color: #1565C0;
+}
+
+/* Info button */
+.info-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.info-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #1565C0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Ensure it's always on a separate line */
+}
+
+.info-button:hover {
+  opacity: 0.8;
+}
+
+/* Dark mode styles for info button */
+.dark-info {
+  background-color: #E0E0E0;
+  color: #151515;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 20px;
+  margin-bottom: 10px; /* Adds space below the switch */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #1565C0;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Add margin between the info button and the toggle switch */
+.info-button-container > .info-button {
+  margin-top: 15px; /* Adds space between the buttons */
 }
