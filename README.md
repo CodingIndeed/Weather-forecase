@@ -50,7 +50,7 @@ This is a simple weather forecast web application built with **React** that prov
    Add your OpenWeatherMap API key to the `.env` file:
 
    ```env
-   REACT_APP_WEATHER_API_KEY=your_openweather_api_key
+   REACT_APP_WEATHER_API_KEY='API KEY'
    ```
 
    You can obtain an API key from the OpenWeatherMap API.
